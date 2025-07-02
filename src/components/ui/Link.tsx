@@ -103,12 +103,14 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
       )
     }
 
+    const { className: _, ...linkProps } = props
+    
     return (
       <NextLink
         ref={ref}
         href={href}
         className={linkClassName}
-        {...props}
+        {...linkProps}
       >
         {children}
       </NextLink>
