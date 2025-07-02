@@ -1,14 +1,14 @@
 'use client'
 
-import { forwardRef } from 'react'
 import { cn } from '@/lib/utils'
 
-interface TextProps extends React.HTMLAttributes<HTMLElement> {
+interface TextProps {
   as?: 'p' | 'span' | 'div' | 'label' | 'strong' | 'em'
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   weight?: 'normal' | 'medium' | 'semibold' | 'bold'
   color?: 'default' | 'muted' | 'subtle' | 'primary' | 'secondary' | 'success' | 'warning' | 'error'
   align?: 'left' | 'center' | 'right' | 'justify'
+  className?: string
   children: React.ReactNode
 }
 
@@ -44,35 +44,30 @@ const textVariants = {
   }
 }
 
-export const Text = forwardRef<HTMLElement, TextProps>(
-  ({ 
-    className, 
-    as = 'p', 
-    size = 'md', 
-    weight = 'normal', 
-    color = 'default',
-    align = 'left',
-    children, 
-    ...props 
-  }, ref) => {
-    const Component = as
+export const Text = ({ 
+  className, 
+  as = 'p', 
+  size = 'md', 
+  weight = 'normal', 
+  color = 'default',
+  align = 'left',
+  children,
+  ...props 
+}: TextProps) => {
+  const Component = as
 
-    return (
-      <Component
-        ref={ref}
-        className={cn(
-          textVariants.size[size],
-          textVariants.weight[weight],
-          textVariants.color[color],
-          textVariants.align[align],
-          className
-        )}
-        {...props}
-      >
-        {children}
-      </Component>
-    )
-  }
-)
-
-Text.displayName = 'Text'
+  return (
+    <Component
+      className={cn(
+        textVariants.size[size],
+        textVariants.weight[weight],
+        textVariants.color[color],
+        textVariants.align[align],
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </Component>
+  )
+}

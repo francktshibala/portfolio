@@ -1,13 +1,13 @@
 'use client'
 
-import { forwardRef } from 'react'
 import { cn } from '@/lib/utils'
 
-interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
+interface HeadingProps {
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl'
   weight?: 'normal' | 'medium' | 'semibold' | 'bold' | 'extrabold'
   color?: 'default' | 'muted' | 'primary' | 'secondary'
+  className?: string
   children: React.ReactNode
 }
 
@@ -57,36 +57,31 @@ const defaultWeightForTag = {
   h6: 'medium' as const
 }
 
-export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
-  ({ 
-    className, 
-    as = 'h1', 
-    size, 
-    weight, 
-    color = 'default', 
-    children, 
-    ...props 
-  }, ref) => {
-    const Component = as
-    const resolvedSize = size || defaultSizeForTag[as]
-    const resolvedWeight = weight || defaultWeightForTag[as]
+export const Heading = ({ 
+  className, 
+  as = 'h1', 
+  size, 
+  weight, 
+  color = 'default', 
+  children,
+  ...props 
+}: HeadingProps) => {
+  const Component = as
+  const resolvedSize = size || defaultSizeForTag[as]
+  const resolvedWeight = weight || defaultWeightForTag[as]
 
-    return (
-      <Component
-        ref={ref}
-        className={cn(
-          'tracking-tight',
-          headingVariants.size[resolvedSize],
-          headingVariants.weight[resolvedWeight],
-          headingVariants.color[color],
-          className
-        )}
-        {...props}
-      >
-        {children}
-      </Component>
-    )
-  }
-)
-
-Heading.displayName = 'Heading'
+  return (
+    <Component
+      className={cn(
+        'tracking-tight',
+        headingVariants.size[resolvedSize],
+        headingVariants.weight[resolvedWeight],
+        headingVariants.color[color],
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </Component>
+  )
+}
