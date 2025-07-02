@@ -1,4 +1,4 @@
-import { Container, Card, CardHeader, CardContent, Button, Heading, Text, Link } from '@/components/ui'
+import { Container, Card, CardHeader, CardContent, Button, Heading, Text, Link, Badge, Avatar, AvatarGroup } from '@/components/ui'
 
 export default function Home() {
   return (
@@ -58,12 +58,26 @@ export default function Home() {
             </CardHeader>
             <CardContent>
               <div className="space-y-2">
-                <Text size="sm" color="muted">✅ Button Component</Text>
-                <Text size="sm" color="muted">✅ Input Component</Text>
-                <Text size="sm" color="muted">✅ Card Component</Text>
-                <Text size="sm" color="muted">✅ Container Component</Text>
-                <Text size="sm" color="muted">✅ Typography Components</Text>
-                <Text size="sm" color="muted">✅ Link Component</Text>
+                <div className="flex items-center gap-2">
+                  <Text size="sm" color="muted">✅ Button, Input, Card</Text>
+                  <Badge variant="success" size="sm">Core</Badge>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Text size="sm" color="muted">✅ Modal, Dropdown</Text>
+                  <Badge variant="primary" size="sm">Interactive</Badge>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Text size="sm" color="muted">✅ Forms (Textarea, Checkbox, Radio)</Text>
+                  <Badge variant="secondary" size="sm">Forms</Badge>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Text size="sm" color="muted">✅ Toast, Badge, Avatar</Text>
+                  <Badge variant="warning" size="sm">UI</Badge>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Text size="sm" color="muted">✅ Typography, Link</Text>
+                  <Badge variant="outline" size="sm">Text</Badge>
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -100,6 +114,42 @@ export default function Home() {
               External Link
             </Link>
           </div>
+
+          <div className="mb-8">
+            <Heading as="h3" size="lg" className="mb-4">
+              Advanced Components
+            </Heading>
+            
+            <div className="flex flex-wrap justify-center items-center gap-6 mb-6">
+              <div className="flex items-center gap-2">
+                <Text size="sm">Badges:</Text>
+                <Badge variant="success">Success</Badge>
+                <Badge variant="warning">Warning</Badge>
+                <Badge variant="error">Error</Badge>
+                <Badge variant="outline">Outline</Badge>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap justify-center items-center gap-6">
+              <div className="flex items-center gap-3">
+                <Text size="sm">Avatars:</Text>
+                <Avatar size="sm" fallback="JD" />
+                <Avatar size="md" fallback="AB" />
+                <Avatar size="lg" fallback="CD" />
+              </div>
+              
+              <div className="flex items-center gap-3">
+                <Text size="sm">Avatar Group:</Text>
+                <AvatarGroup max={3}>
+                  <Avatar fallback="A" />
+                  <Avatar fallback="B" />
+                  <Avatar fallback="C" />
+                  <Avatar fallback="D" />
+                  <Avatar fallback="E" />
+                </AvatarGroup>
+              </div>
+            </div>
+          </div>
         </Card>
 
         <div className="mt-12 text-center">
@@ -113,9 +163,12 @@ export default function Home() {
             <span className="px-4 py-2 bg-accent-100 text-accent-800 rounded-full text-sm font-medium">
               Phase 1 Day 3: Complete
             </span>
+            <span className="px-4 py-2 bg-accent-100 text-accent-800 rounded-full text-sm font-medium">
+              Phase 1 Day 4: Complete
+            </span>
           </div>
           <Text color="muted">
-            Ready for Day 4: Advanced Component Library & Storybook Setup
+            15+ Components Built • Ready for Day 5: Database & API Setup
           </Text>
         </div>
       </Container>
