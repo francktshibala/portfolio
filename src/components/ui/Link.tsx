@@ -4,13 +4,24 @@ import { forwardRef } from 'react'
 import NextLink from 'next/link'
 import { cn } from '@/lib/utils'
 
-interface LinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+interface BaseLinkProps {
   href: string
   variant?: 'default' | 'primary' | 'secondary' | 'muted' | 'underline'
   size?: 'sm' | 'md' | 'lg'
   external?: boolean
+  className?: string
   children: React.ReactNode
 }
+
+interface InternalLinkProps extends BaseLinkProps {
+  external?: false
+}
+
+interface ExternalLinkProps extends BaseLinkProps, Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof BaseLinkProps> {
+  external: true
+}
+
+type LinkProps = InternalLinkProps | ExternalLinkProps
 
 const linkVariants = {
   variant: {
@@ -49,15 +60,17 @@ const linkVariants = {
 }
 
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
-  ({ 
-    className, 
-    href, 
-    variant = 'default', 
-    size = 'md', 
-    external = false,
-    children, 
-    ...props 
-  }, ref) => {
+  (props, ref) => {
+    const { 
+      className, 
+      href, 
+      variant = 'default', 
+      size = 'md', 
+      external = false,
+      children,
+      ...restProps
+    } = props
+    
     const isExternalLink = external || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:')
     
     const linkClassName = cn(
@@ -68,19 +81,19 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
       className
     )
 
-    const externalProps = isExternalLink ? {
-      target: '_blank',
-      rel: 'noopener noreferrer'
-    } : {}
-
     if (isExternalLink) {
+      const externalProps = {
+        target: '_blank' as const,
+        rel: 'noopener noreferrer'
+      }
+
       return (
         <a
           ref={ref}
           href={href}
           className={linkClassName}
           {...externalProps}
-          {...props}
+          {...(restProps as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
         >
           {children}
           {external !== false && (
@@ -103,14 +116,12 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
       )
     }
 
-    const { className: _, ...linkProps } = props
-    
+    // For internal links, only pass href, className and basic props to NextLink
     return (
       <NextLink
-        ref={ref}
         href={href}
         className={linkClassName}
-        {...linkProps}
+        ref={ref}
       >
         {children}
       </NextLink>
