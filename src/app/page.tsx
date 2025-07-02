@@ -11,11 +11,18 @@ export default function Home() {
         <div className="space-y-2 text-sm text-gray-500">
           <p>✅ Project Structure Created</p>
           <p>✅ Dependencies Installed</p>
+          <p>✅ TypeScript Strict Mode</p>
+          <p>✅ ESLint + Prettier Setup</p>
+          <p>✅ Husky Pre-commit Hooks</p>
+          <p>✅ Testing Framework (Vitest)</p>
           <p>✅ Deployment Working</p>
         </div>
-        <div className="mt-8">
+        <div className="mt-8 space-x-2">
           <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">
             Phase 1 Day 1: Complete
+          </span>
+          <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">
+            Phase 1 Day 2: Complete
           </span>
         </div>
       </div>
