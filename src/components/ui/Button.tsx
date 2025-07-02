@@ -55,7 +55,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           'focus:outline-none focus-visible:ring-offset-background',
           buttonVariants.variant[variant],
           buttonVariants.size[size],
-          loading && 'cursor-wait opacity-70',
+          loading ? 'cursor-wait opacity-70' : '',
           className
         )}
         disabled={disabled || loading}
