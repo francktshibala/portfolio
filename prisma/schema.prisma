@@ -1,0 +1,160 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Project {
+  id           String   @id @default(cuid())
+  title        String
+  description  String
+  longDescription String?
+  technologies String
+  githubUrl    String?
+  liveUrl      String?
+  imageUrl     String?
+  images       String
+  featured     Boolean  @default(false)
+  status       ProjectStatus @default(COMPLETED)
+  startDate    DateTime?
+  endDate      DateTime?
+  category     String
+  priority     Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([featured])
+  @@index([status])
+  @@index([category])
+  @@index([createdAt])
+}
+
+model Skill {
+  id          String      @id @default(cuid())
+  name        String      @unique
+  level       Int         @default(1)
+  category    SkillCategory
+  description String?
+  iconUrl     String?
+  yearsOfExperience Int?
+  certified   Boolean     @default(false)
+  featured    Boolean     @default(false)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  experiences ExperienceSkill[]
+
+  @@index([category])
+  @@index([featured])
+  @@index([level])
+}
+
+model Experience {
+  id          String   @id @default(cuid())
+  title       String
+  company     String
+  location    String?
+  description String
+  startDate   DateTime
+  endDate     DateTime?
+  current     Boolean  @default(false)
+  type        ExperienceType
+  logoUrl     String?
+  companyUrl  String?
+  achievements String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  skills      ExperienceSkill[]
+
+  @@index([current])
+  @@index([type])
+  @@index([startDate])
+}
+
+model ExperienceSkill {
+  id           String @id @default(cuid())
+  experienceId String
+  skillId      String
+  
+  experience   Experience @relation(fields: [experienceId], references: [id], onDelete: Cascade)
+  skill        Skill      @relation(fields: [skillId], references: [id], onDelete: Cascade)
+
+  @@unique([experienceId, skillId])
+}
+
+model Contact {
+  id        String      @id @default(cuid())
+  name      String
+  email     String
+  subject   String?
+  message   String
+  status    ContactStatus @default(UNREAD)
+  replied   Boolean     @default(false)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+
+  @@index([status])
+  @@index([createdAt])
+}
+
+model Blog {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  excerpt     String?
+  content     String
+  published   Boolean  @default(false)
+  featured    Boolean  @default(false)
+  imageUrl    String?
+  tags        String
+  readTime    Int?
+  views       Int      @default(0)
+  likes       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  publishedAt DateTime?
+
+  @@index([published])
+  @@index([featured])
+  @@index([slug])
+  @@index([createdAt])
+}
+
+enum ProjectStatus {
+  PLANNING
+  IN_PROGRESS
+  COMPLETED
+  ARCHIVED
+}
+
+enum SkillCategory {
+  FRONTEND
+  BACKEND
+  DATABASE
+  DEVOPS
+  MOBILE
+  DESIGN
+  TESTING
+  TOOLS
+  SOFT_SKILLS
+}
+
+enum ExperienceType {
+  FULL_TIME
+  PART_TIME
+  CONTRACT
+  FREELANCE
+  INTERNSHIP
+  VOLUNTEER
+}
+
+enum ContactStatus {
+  UNREAD
+  READ
+  REPLIED
+  ARCHIVED
+}
