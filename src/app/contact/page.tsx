@@ -250,7 +250,7 @@ export default function ContactPage() {
       </nav>
 
       <div className="mb-12">
-        <Heading level={1} className="mb-4">Get In Touch</Heading>
+        <Heading as="h1" className="mb-4">Get In Touch</Heading>
         <Text size="lg" className="text-[var(--color-text-secondary)] max-w-2xl">
           Ready to start your next project? I'd love to hear about it. 
           Send me a message and I'll get back to you as soon as possible.
@@ -259,13 +259,13 @@ export default function ContactPage() {
 
       <div className="grid gap-12 lg:grid-cols-2">
         <div>
-          <Heading level={2} className="mb-6">Send Me a Message</Heading>
+          <Heading as="h2" className="mb-6">Send Me a Message</Heading>
           <ContactForm />
         </div>
 
         <div>
           <div className="mb-8">
-            <Heading level={2} className="mb-6">Contact Information</Heading>
+            <Heading as="h2" className="mb-6">Contact Information</Heading>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
               {contactInfo.map((info, index) => (
                 <Card key={index} className="p-4">
@@ -293,11 +293,11 @@ export default function ContactPage() {
           </div>
 
           <div>
-            <Heading level={2} className="mb-6">Frequently Asked Questions</Heading>
+            <Heading as="h2" className="mb-6">Frequently Asked Questions</Heading>
             <div className="space-y-4">
               {faqs.map((faq, index) => (
                 <Card key={index} className="p-4">
-                  <Heading level={4} className="mb-2 text-gray-900">
+                  <Heading as="h4" className="mb-2 text-gray-900">
                     {faq.question}
                   </Heading>
                   <Text size="sm" className="text-gray-600">
@@ -312,7 +312,7 @@ export default function ContactPage() {
 
       <div className="mt-12 p-8 bg-gray-50 rounded-lg">
         <div className="text-center">
-          <Heading level={3} className="mb-4">Prefer a Different Way to Connect?</Heading>
+          <Heading as="h3" className="mb-4">Prefer a Different Way to Connect?</Heading>
           <Text className="text-gray-600 mb-6">
             I'm also available on various platforms. Choose whatever works best for you!
           </Text>

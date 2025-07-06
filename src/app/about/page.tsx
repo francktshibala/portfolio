@@ -51,7 +51,7 @@ const ExperienceTimeline = () => {
           <div className="flex-1 pb-8">
             <div className="flex items-start justify-between mb-2">
               <div>
-                <Heading level={4} className="mb-1">{exp.title}</Heading>
+                <Heading as="h4" className="mb-1">{exp.title}</Heading>
                 <Text className="font-medium text-blue-600">{exp.company}</Text>
                 {exp.location && (
                   <Text size="sm" className="text-gray-500">{exp.location}</Text>
@@ -131,7 +131,7 @@ export default function AboutPage() {
       </nav>
 
       <div className="mb-12">
-        <Heading level={1} className="mb-4">About Me</Heading>
+        <Heading as="h1" className="mb-4">About Me</Heading>
         <Text size="lg" className="text-[var(--color-text-secondary)] max-w-3xl">
           I'm a passionate full-stack developer with over {experienceYears} years of experience 
           creating innovative web solutions. I specialize in modern JavaScript frameworks, 
@@ -143,7 +143,7 @@ export default function AboutPage() {
         {stats.map((stat, index) => (
           <Card key={index} className="text-center">
             <CardContent className="p-6">
-              <Heading level={2} className="text-3xl text-blue-600 mb-2">
+              <Heading as="h2" size="3xl" className="text-blue-600 mb-2">
                 {stat.value}
               </Heading>
               <Text size="sm" className="text-gray-600">{stat.label}</Text>
@@ -154,12 +154,12 @@ export default function AboutPage() {
 
       <div className="grid gap-12 lg:grid-cols-2">
         <div>
-          <Heading level={2} className="mb-6">Professional Journey</Heading>
+          <Heading as="h2" className="mb-6">Professional Journey</Heading>
           <ExperienceTimeline />
         </div>
 
         <div>
-          <Heading level={2} className="mb-6">Skills & Expertise</Heading>
+          <Heading as="h2" className="mb-6">Skills & Expertise</Heading>
           
           {skillsLoading ? (
             <div className="animate-pulse space-y-6">
@@ -181,7 +181,7 @@ export default function AboutPage() {
                 .slice(0, 6)
                 .map(([category, skills]) => (
                 <div key={category}>
-                  <Heading level={3} className="mb-4">
+                  <Heading as="h3" className="mb-4">
                     {categoryDisplayNames[category as SkillCategory]}
                   </Heading>
                   <div className="space-y-3">
@@ -200,22 +200,22 @@ export default function AboutPage() {
       </div>
 
       <div className="mt-12 p-8 bg-gray-50 rounded-lg">
-        <Heading level={2} className="mb-4">My Approach</Heading>
+        <Heading as="h2" className="mb-4">My Approach</Heading>
         <div className="grid gap-6 md:grid-cols-3">
           <div>
-            <Heading level={4} className="mb-2 text-blue-600">Clean Code</Heading>
+            <Heading as="h4" className="mb-2 text-blue-600">Clean Code</Heading>
             <Text size="sm" className="text-gray-700">
               I believe in writing maintainable, well-documented code that stands the test of time.
             </Text>
           </div>
           <div>
-            <Heading level={4} className="mb-2 text-blue-600">User-Centric</Heading>
+            <Heading as="h4" className="mb-2 text-blue-600">User-Centric</Heading>
             <Text size="sm" className="text-gray-700">
               Every decision is made with the end user in mind, ensuring intuitive and accessible experiences.
             </Text>
           </div>
           <div>
-            <Heading level={4} className="mb-2 text-blue-600">Continuous Learning</Heading>
+            <Heading as="h4" className="mb-2 text-blue-600">Continuous Learning</Heading>
             <Text size="sm" className="text-gray-700">
               Technology evolves rapidly, and I stay current with the latest tools and best practices.
             </Text>

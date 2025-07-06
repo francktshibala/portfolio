@@ -19,7 +19,7 @@ export function ProjectGallery({ images, title, className = '' }: ProjectGallery
   return (
     <>
       <div className={className}>
-        <Heading level={3} className="mb-4">Gallery</Heading>
+        <Heading as="h3" className="mb-4">Gallery</Heading>
         <div className="grid gap-4 md:grid-cols-2">
           {images.map((image, index) => (
             <div 

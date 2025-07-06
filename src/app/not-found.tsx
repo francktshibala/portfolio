@@ -6,10 +6,10 @@ export default function NotFound() {
     <Container className="py-16">
       <div className="text-center max-w-2xl mx-auto">
         <div className="mb-8">
-          <Heading level={1} className="text-6xl font-bold text-[var(--color-primary-600)] mb-4">
+          <Heading as="h1" className="text-6xl font-bold text-[var(--color-primary-600)] mb-4">
             404
           </Heading>
-          <Heading level={2} className="mb-4">
+          <Heading as="h2" className="mb-4">
             Page Not Found
           </Heading>
           <Text size="lg" className="text-[var(--color-text-secondary)] mb-8">

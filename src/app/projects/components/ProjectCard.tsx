@@ -23,7 +23,7 @@ export function ProjectCard({ project, className = '' }: ProjectCardProps) {
       
       <CardHeader>
         <div className="flex items-start justify-between mb-2">
-          <Heading level={3} className="line-clamp-2">
+          <Heading as="h3" className="line-clamp-2">
             <Link href={`/projects/${project.id}`} className="hover:text-blue-600">
               {project.title}
             </Link>

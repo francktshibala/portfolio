@@ -48,7 +48,7 @@ export default function ProjectsPage() {
     return (
       <Container className="py-16">
         <div className="text-center">
-          <Heading level={1} className="text-red-600 mb-4">Error</Heading>
+          <Heading as="h1" className="text-red-600 mb-4">Error</Heading>
           <Text className="text-gray-600">{error}</Text>
         </div>
       </Container>
@@ -68,7 +68,7 @@ export default function ProjectsPage() {
       </nav>
 
       <div className="mb-12">
-        <Heading level={1} className="mb-4">Projects</Heading>
+        <Heading as="h1" className="mb-4">Projects</Heading>
         <Text size="lg" className="text-[var(--color-text-secondary)] max-w-2xl">
           Explore my portfolio of projects showcasing expertise in modern web development,
           from enterprise applications to creative experiments.
@@ -93,7 +93,7 @@ export default function ProjectsPage() {
 
       {projects.length === 0 ? (
         <div className="text-center py-12">
-          <Heading level={3} className="text-gray-500 mb-2">No projects found</Heading>
+          <Heading as="h3" className="text-gray-500 mb-2">No projects found</Heading>
           <Text className="text-gray-400">Try adjusting your search criteria</Text>
         </div>
       ) : (

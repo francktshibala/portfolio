@@ -33,7 +33,7 @@ export default function ProjectDetailPage() {
     return (
       <Container className="py-16">
         <div className="text-center">
-          <Heading level={1} className="text-red-600 mb-4">Project Not Found</Heading>
+          <Heading as="h1" className="text-red-600 mb-4">Project Not Found</Heading>
           <Text className="text-gray-600 mb-8">
             {error || 'The project you are looking for does not exist.'}
           </Text>
@@ -94,7 +94,7 @@ export default function ProjectDetailPage() {
         
         <div className="flex items-start justify-between mb-6">
           <div>
-            <Heading level={1} className="mb-2">{project.title}</Heading>
+            <Heading as="h1" className="mb-2">{project.title}</Heading>
             <div className="flex items-center gap-3 mb-4">
               <Badge variant="outline">{project.category}</Badge>
               <Badge 
@@ -143,7 +143,7 @@ export default function ProjectDetailPage() {
           />
 
           <div className="prose max-w-none">
-            <Heading level={2} className="mb-4">About This Project</Heading>
+            <Heading as="h2" className="mb-4">About This Project</Heading>
             <Text className="text-gray-700 leading-relaxed">
               {project.longDescription || project.description}
             </Text>
@@ -153,7 +153,7 @@ export default function ProjectDetailPage() {
         <div className="space-y-6">
           <Card>
             <CardContent className="p-6">
-              <Heading level={3} className="mb-4">Project Details</Heading>
+              <Heading as="h3" className="mb-4">Project Details</Heading>
               
               <div className="space-y-4">
                 {project.startDate && (
@@ -198,7 +198,7 @@ export default function ProjectDetailPage() {
           {(project.liveUrl || project.githubUrl) && (
             <Card>
               <CardContent className="p-6">
-                <Heading level={3} className="mb-4">Links</Heading>
+                <Heading as="h3" className="mb-4">Links</Heading>
                 <div className="space-y-3">
                   {project.liveUrl && (
                     <div>

@@ -12,7 +12,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-primary-50)] to-[var(--color-secondary-100)] -z-10" />
       <Container>
         <div className="max-w-4xl mx-auto text-center">
-          <Heading level={1} className="text-4xl lg:text-6xl font-bold mb-6">
+          <Heading as="h1" className="text-4xl lg:text-6xl font-bold mb-6">
             Full Stack Developer &<br />
             <span className="text-[var(--color-primary-600)]">Digital Craftsman</span>
           </Heading>
@@ -71,7 +71,7 @@ const FeaturedProjects = () => {
   return (
     <div>
       <div className="text-center mb-12">
-        <Heading level={2} className="mb-4">Featured Projects</Heading>
+        <Heading as="h2" className="mb-4">Featured Projects</Heading>
         <Text size="lg" className="text-gray-600">
           A selection of my best work showcasing technical expertise and creativity
         </Text>
@@ -95,7 +95,7 @@ const FeaturedProjects = () => {
             )}
             
             <CardHeader>
-              <Heading level={3} className="mb-2">
+              <Heading as="h3" className="mb-2">
                 <Link href={`/projects/${project.id}`} className="hover:text-[var(--color-primary-600)]">
                   {project.title}
                 </Link>
@@ -180,7 +180,7 @@ const SkillsHighlight = () => {
 
   return (
     <div className="text-center">
-      <Heading level={3} className="mb-6">Core Technologies</Heading>
+      <Heading as="h3" className="mb-6">Core Technologies</Heading>
       <div className="flex flex-wrap justify-center gap-3 mb-6">
         {featuredSkills.map(skill => (
           <Badge
@@ -217,7 +217,7 @@ const Stats = () => {
     <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
       {stats.map((stat, index) => (
         <div key={index} className="text-center">
-          <Heading level={2} className="text-3xl text-[var(--color-primary-600)] mb-2">
+          <Heading as="h2" className="text-3xl text-[var(--color-primary-600)] mb-2">
             {stat.value}
           </Heading>
           <Text size="sm" className="text-[var(--color-text-secondary)]">{stat.label}</Text>
@@ -248,7 +248,7 @@ export default function Home() {
       
       <Container className="py-16">
         <div className="text-center max-w-3xl mx-auto">
-          <Heading level={2} className="mb-4">Let's Work Together</Heading>
+          <Heading as="h2" className="mb-4">Let's Work Together</Heading>
           <Text size="lg" className="text-[var(--color-text-secondary)] mb-8">
             Have a project in mind? I'd love to help bring your ideas to life with 
             clean code, thoughtful design, and exceptional user experiences.
