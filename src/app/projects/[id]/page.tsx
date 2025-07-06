@@ -4,6 +4,7 @@ import { useParams } from 'next/navigation'
 import { Container, Heading, Text, Card, CardContent, Badge, Button, Link } from '@/components/ui'
 import { useProject } from '@/lib/hooks'
 import { ProjectStatus } from '@/lib/types'
+import { ProjectTechList, ProjectGallery } from '../components'
 
 export default function ProjectDetailPage() {
   const params = useParams()
@@ -121,22 +122,11 @@ export default function ProjectDetailPage() {
             </div>
           )}
 
-          {project.images && project.images.length > 0 && (
-            <div className="mb-8">
-              <Heading level={3} className="mb-4">Gallery</Heading>
-              <div className="grid gap-4 md:grid-cols-2">
-                {project.images.map((image, index) => (
-                  <div key={index} className="aspect-video bg-gray-100 rounded-lg overflow-hidden">
-                    <img
-                      src={image}
-                      alt={`${project.title} screenshot ${index + 1}`}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
+          <ProjectGallery 
+            images={project.images} 
+            title={project.title}
+            className="mb-8"
+          />
 
           <div className="prose max-w-none">
             <Heading level={2} className="mb-4">About This Project</Heading>
@@ -187,12 +177,7 @@ export default function ProjectDetailPage() {
 
           <Card>
             <CardContent className="p-6">
-              <Heading level={3} className="mb-4">Technologies</Heading>
-              <div className="flex flex-wrap gap-2">
-                {project.technologies.map(tech => (
-                  <Badge key={tech} variant="secondary">{tech}</Badge>
-                ))}
-              </div>
+              <ProjectTechList technologies={project.technologies} />
             </CardContent>
           </Card>
 
