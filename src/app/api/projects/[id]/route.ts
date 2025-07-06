@@ -4,10 +4,11 @@ import { updateProjectSchema } from '@/lib/validations'
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const project = await projectService.findById(params.id)
+    const { id } = await params
+    const project = await projectService.findById(id)
 
     if (!project) {
       return NextResponse.json(
@@ -28,13 +29,14 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params
     const body = await request.json()
-    const validatedData = updateProjectSchema.parse({ ...body, id: params.id })
+    const validatedData = updateProjectSchema.parse({ ...body, id })
 
-    const project = await projectService.update(params.id, validatedData)
+    const project = await projectService.update(id, validatedData)
 
     return NextResponse.json({ project })
   } catch (error) {
@@ -48,10 +50,11 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    await projectService.delete(params.id)
+    const { id } = await params
+    await projectService.delete(id)
 
     return NextResponse.json({ message: 'Project deleted successfully' })
   } catch (error) {
