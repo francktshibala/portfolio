@@ -96,7 +96,7 @@ const ExperienceTimeline = () => {
 }
 
 export default function AboutPage() {
-  const { skillsByCategory, loading: skillsLoading, totalYears } = useSkills()
+  const { skillsByCategory, loading: skillsLoading } = useSkills()
   const { totalYears: experienceYears } = useExperience()
 
   const categoryDisplayNames: Record<SkillCategory, string> = {
