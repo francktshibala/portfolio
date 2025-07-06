@@ -2,18 +2,19 @@
 
 import { Container, Card, CardHeader, CardContent, Button, Heading, Text, Link, Badge } from '@/components/ui'
 import { useProjects, useSkills, useExperience } from '@/lib/hooks'
+import Image from 'next/image'
 
 const HeroSection = () => {
   const { currentExperience, totalYears } = useExperience()
   
   return (
     <div className="relative py-20 lg:py-32">
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-100 -z-10" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-primary-50)] to-[var(--color-secondary-100)] -z-10" />
       <Container>
         <div className="max-w-4xl mx-auto text-center">
           <Heading level={1} className="text-4xl lg:text-6xl font-bold mb-6">
             Full Stack Developer &<br />
-            <span className="text-blue-600">Digital Craftsman</span>
+            <span className="text-[var(--color-primary-600)]">Digital Craftsman</span>
           </Heading>
           
           <Text size="xl" className="text-gray-600 mb-8 max-w-2xl mx-auto">
@@ -80,18 +81,22 @@ const FeaturedProjects = () => {
         {featuredProjects.slice(0, 3).map(project => (
           <Card key={project.id} className="group hover:shadow-xl transition-all duration-300">
             {project.imageUrl && (
-              <div className="aspect-video bg-gray-100 rounded-t-lg overflow-hidden">
-                <img
+              <div className="aspect-video bg-[var(--color-background-secondary)] rounded-t-lg overflow-hidden">
+                <Image
                   src={project.imageUrl}
                   alt={project.title}
+                  width={400}
+                  height={225}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                 />
               </div>
             )}
             
             <CardHeader>
               <Heading level={3} className="mb-2">
-                <Link href={`/projects/${project.id}`} className="hover:text-blue-600">
+                <Link href={`/projects/${project.id}`} className="hover:text-[var(--color-primary-600)]">
                   {project.title}
                 </Link>
               </Heading>
@@ -125,7 +130,7 @@ const FeaturedProjects = () => {
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-600 hover:text-blue-800"
+                    className="text-[var(--color-primary-600)] hover:text-[var(--color-primary-800)]"
                   >
                     Live Demo →
                   </Link>
@@ -135,7 +140,7 @@ const FeaturedProjects = () => {
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-600 hover:text-gray-800"
+                    className="text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
                   >
                     Code →
                   </Link>
@@ -181,7 +186,7 @@ const SkillsHighlight = () => {
           <Badge
             key={skill.id}
             variant="outline"
-            className="px-4 py-2 text-sm font-medium hover:bg-blue-50 transition-colors"
+            className="px-4 py-2 text-sm font-medium hover:bg-[var(--color-primary-50)] transition-colors"
           >
             {skill.name}
           </Badge>
@@ -212,10 +217,10 @@ const Stats = () => {
     <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
       {stats.map((stat, index) => (
         <div key={index} className="text-center">
-          <Heading level={2} className="text-3xl text-blue-600 mb-2">
+          <Heading level={2} className="text-3xl text-[var(--color-primary-600)] mb-2">
             {stat.value}
           </Heading>
-          <Text size="sm" className="text-gray-600">{stat.label}</Text>
+          <Text size="sm" className="text-[var(--color-text-secondary)]">{stat.label}</Text>
         </div>
       ))}
     </div>
@@ -235,7 +240,7 @@ export default function Home() {
         <FeaturedProjects />
       </Container>
       
-      <div className="bg-gray-50 py-16">
+      <div className="bg-[var(--color-background-secondary)] py-16">
         <Container>
           <SkillsHighlight />
         </Container>
@@ -244,7 +249,7 @@ export default function Home() {
       <Container className="py-16">
         <div className="text-center max-w-3xl mx-auto">
           <Heading level={2} className="mb-4">Let's Work Together</Heading>
-          <Text size="lg" className="text-gray-600 mb-8">
+          <Text size="lg" className="text-[var(--color-text-secondary)] mb-8">
             Have a project in mind? I'd love to help bring your ideas to life with 
             clean code, thoughtful design, and exceptional user experiences.
           </Text>

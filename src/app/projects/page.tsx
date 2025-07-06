@@ -57,9 +57,19 @@ export default function ProjectsPage() {
 
   return (
     <Container className="py-16">
+      <nav className="mb-6">
+        <div className="flex items-center text-sm text-[var(--color-text-secondary)]">
+          <a href="/" className="hover:text-[var(--color-text-primary)] transition-colors">
+            Home
+          </a>
+          <span className="mx-2">/</span>
+          <span className="text-[var(--color-text-primary)]">Projects</span>
+        </div>
+      </nav>
+
       <div className="mb-12">
         <Heading level={1} className="mb-4">Projects</Heading>
-        <Text size="lg" className="text-gray-600 max-w-2xl">
+        <Text size="lg" className="text-[var(--color-text-secondary)] max-w-2xl">
           Explore my portfolio of projects showcasing expertise in modern web development,
           from enterprise applications to creative experiments.
         </Text>

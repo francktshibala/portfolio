@@ -120,9 +120,19 @@ export default function AboutPage() {
 
   return (
     <Container className="py-16">
+      <nav className="mb-6">
+        <div className="flex items-center text-sm text-[var(--color-text-secondary)]">
+          <a href="/" className="hover:text-[var(--color-text-primary)] transition-colors">
+            Home
+          </a>
+          <span className="mx-2">/</span>
+          <span className="text-[var(--color-text-primary)]">About</span>
+        </div>
+      </nav>
+
       <div className="mb-12">
         <Heading level={1} className="mb-4">About Me</Heading>
-        <Text size="lg" className="text-gray-600 max-w-3xl">
+        <Text size="lg" className="text-[var(--color-text-secondary)] max-w-3xl">
           I'm a passionate full-stack developer with over {experienceYears} years of experience 
           creating innovative web solutions. I specialize in modern JavaScript frameworks, 
           scalable backend architectures, and delivering exceptional user experiences.

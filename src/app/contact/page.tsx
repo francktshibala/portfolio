@@ -239,9 +239,19 @@ export default function ContactPage() {
 
   return (
     <Container className="py-16">
+      <nav className="mb-6">
+        <div className="flex items-center text-sm text-[var(--color-text-secondary)]">
+          <a href="/" className="hover:text-[var(--color-text-primary)] transition-colors">
+            Home
+          </a>
+          <span className="mx-2">/</span>
+          <span className="text-[var(--color-text-primary)]">Contact</span>
+        </div>
+      </nav>
+
       <div className="mb-12">
         <Heading level={1} className="mb-4">Get In Touch</Heading>
-        <Text size="lg" className="text-gray-600 max-w-2xl">
+        <Text size="lg" className="text-[var(--color-text-secondary)] max-w-2xl">
           Ready to start your next project? I'd love to hear about it. 
           Send me a message and I'll get back to you as soon as possible.
         </Text>

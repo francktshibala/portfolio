@@ -73,8 +73,22 @@ export default function ProjectDetailPage() {
 
   return (
     <Container className="py-16">
+      <nav className="mb-6">
+        <div className="flex items-center text-sm text-[var(--color-text-secondary)]">
+          <a href="/" className="hover:text-[var(--color-text-primary)] transition-colors">
+            Home
+          </a>
+          <span className="mx-2">/</span>
+          <a href="/projects" className="hover:text-[var(--color-text-primary)] transition-colors">
+            Projects
+          </a>
+          <span className="mx-2">/</span>
+          <span className="text-[var(--color-text-primary)]">{project.title}</span>
+        </div>
+      </nav>
+
       <div className="mb-8">
-        <Link href="/projects" className="text-blue-600 hover:text-blue-800 mb-4 inline-block">
+        <Link href="/projects" className="text-[var(--color-primary-600)] hover:text-[var(--color-primary-800)] mb-4 inline-block">
           ← Back to Projects
         </Link>
         
