@@ -1,6 +1,6 @@
 'use client'
 
-import { Container, Heading, Text, Card, CardHeader, CardContent, Badge } from '@/components/ui'
+import { Container, Heading, Text, Card, CardContent, Badge } from '@/components/ui'
 import { useSkills, useExperience } from '@/lib/hooks'
 import { SkillCategory } from '@/lib/types'
 
