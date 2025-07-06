@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { projectService } from '@/lib/database'
 import { updateProjectSchema } from '@/lib/validations'
 
+// Next.js 15 API Route - Force cache clear
+
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
